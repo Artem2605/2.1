@@ -10,6 +10,9 @@ import java.util.List;
 
 public class MainApp {
 
+    //todo: п.5 задачи не делался
+    //todo: нет удаления user-а и затеп получения - всех
+
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);

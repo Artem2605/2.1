@@ -19,6 +19,7 @@ public class UserServiceImp implements UserService {
     @Override
     public void add(User user) {
         userDao.add(user);
+        System.out.println("////////");//todo: логирование на уровне services (для всех методов сервиса)
     }
 
     @Transactional(readOnly = true)

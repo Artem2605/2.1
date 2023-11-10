@@ -10,7 +10,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME")    //todo:     @Column(name = "NAME") - с прописной
     private String firstName;
 
     @Column(name = "LAST_NAME")

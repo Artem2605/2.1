@@ -15,6 +15,12 @@ public class UserDaoImp implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    //todo - переделать в одномодульный maven-project
+    //todo: используем конструктив try_cach_with_resources для Session
+    //todo: listUsersQuery нейминг переменных.. вместо например query
+    //todo jdk11
+    //todo .gitignore - если нет, испорчу репозиторий
+
     @Override
     public void add(User user) {
         sessionFactory.getCurrentSession().save(user);

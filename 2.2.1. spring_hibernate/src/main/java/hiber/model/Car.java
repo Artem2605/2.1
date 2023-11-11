@@ -10,10 +10,10 @@ public class Car {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "MODEL")
+    @Column(name = "model")
     private String model;
 
-    @Column(name = "SERIES")
+    @Column(name = "series")
     private Integer series;
 
     public Car() {

@@ -10,9 +10,6 @@ import java.util.List;
 
 public class MainApp {
 
-    //todo: п.5 задачи не делался
-    //todo: нет удаления user-а и затеп получения - всех
-
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context =
                 new AnnotationConfigApplicationContext(AppConfig.class);
@@ -29,11 +26,12 @@ public class MainApp {
         Car thirdCar = new Car("Toyota", 350);
         thirdUser.setCar(thirdCar);
         userService.add(thirdUser);
-        List<User> users = userService.listUsers();
+        userService.removeUserById(Long.valueOf("2"));
+        List<User> users = userService.getListUsers();
         for (User temp : users) {
-            System.out.println("\n" + temp + "\n");
+            System.out.println(temp);
         }
-        System.out.println("\n" + userService.getUser(firstCar).toString());
+        System.out.println(userService.getUserByCar("MERS", 221).toString());
         context.close();
     }
 }

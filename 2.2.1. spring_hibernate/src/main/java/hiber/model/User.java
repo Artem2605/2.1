@@ -10,17 +10,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "NAME")    //todo:     @Column(name = "NAME") - с прописной
+    @Column(name = "name")
     private String firstName;
 
-    @Column(name = "LAST_NAME")
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "EMAIL")
+    @Column(name = "email")
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CAR_ID")
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public User() {
@@ -80,6 +80,6 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", car=" + car +
-                '}';
+                "}\n---------------\n";
     }
 }

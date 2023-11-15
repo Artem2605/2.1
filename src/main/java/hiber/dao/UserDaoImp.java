@@ -10,14 +10,18 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
+    private final SessionFactory SESSION_FACTORY;
+
     @Autowired
-    private SessionFactory sessionFactory;
+    public UserDaoImp(SessionFactory sessionFactory) {
+        this.SESSION_FACTORY = sessionFactory;
+    }
 
     private List<User> listUsers;
 
     @Override
     public void add(User user) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SESSION_FACTORY.openSession()) {
             session.save(user);
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -27,7 +31,7 @@ public class UserDaoImp implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> getListUsers() {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SESSION_FACTORY.openSession()) {
             listUsers = session.createQuery("from User").getResultList();
         } catch (Exception exception) {
             exception.printStackTrace();
@@ -38,7 +42,7 @@ public class UserDaoImp implements UserDao {
     @Override
     @SuppressWarnings("unchecked")
     public User getUserByCar(String model, Integer series) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SESSION_FACTORY.openSession()) {
             listUsers = session.createQuery("from User user " +
                     "where user.car.model = :model and user.car.series = :series").
                     setParameter("model", model).setParameter("series", series).
@@ -51,7 +55,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void removeUserById(Long id) {
-        try (Session session = sessionFactory.openSession()) {
+        try (Session session = SESSION_FACTORY.openSession()) {
             session.beginTransaction();
             session.createQuery("delete User where id = :id").
                     setParameter("id", id).executeUpdate();
